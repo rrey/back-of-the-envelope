@@ -14,16 +14,24 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, difficulty, category, tags, hints, answer, explanation, keyValues } = entry.data;
+const caseNum = entry.id.slice(0, 3);
 ---
 <BaseLayout title={title}>
-  <p><a href="/">← all cases</a></p>
-  <h1>{title}</h1>
-  <div class="card-meta" style="margin-bottom: 1rem;">
-    <span class={`difficulty difficulty--${difficulty}`}>{difficulty}</span>
-    <span>{category}</span>
-    {tags.map((tag) => <span class="tag">{tag}</span>)}
+  <a class="back-link" href="/">← cd ..</a>
+
+  <div class="case-header">
+    <div class="case-num-line">[{caseNum}] {category}</div>
+    <h1 class="page-title">{title}</h1>
+    <div class="case-meta">
+      <span class={`badge badge-${difficulty}`}>{difficulty}</span>
+      {tags.map((tag) => <span class="tag">{tag}</span>)}
+    </div>
   </div>
-  <Content />
+
+  <div class="scenario">
+    <Content />
+  </div>
+
   <CaseInteractive
     client:load
     hints={hints}
