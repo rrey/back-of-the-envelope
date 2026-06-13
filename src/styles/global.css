@@ -67,6 +67,11 @@ body {
   color: #c9d1d9;
   margin: 0 0 1.75rem;
 }
+.intro-link {
+  color: var(--color-prompt);
+  text-decoration: none;
+}
+.intro-link:hover { color: var(--color-green); }
 
 /* ── Back link (case page) ─────────────────── */
 
