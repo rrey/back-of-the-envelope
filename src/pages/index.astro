@@ -13,6 +13,15 @@ cases.sort((a, b) => a.id.localeCompare(b.id));
     <div class="site-subtitle">order-of-magnitude estimation exercises for SREs and engineers</div>
   </header>
 
+  <p class="intro">
+    Back-of-the-envelope estimation is the art of getting a good-enough answer fast —
+    no spreadsheet, no simulator, just a few key numbers and a chain of multiplications.
+    It tells you whether a design will work before you build it, exposes bottlenecks early,
+    and sharpens your intuition for what matters at scale.
+    Each exercise below gives you a real-world scenario to estimate, hints if you're stuck,
+    and a full breakdown once you submit.
+  </p>
+
   <ul class="case-list">
     {cases.map((entry) => (
       <li>
