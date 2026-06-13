@@ -5,10 +5,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const cases = await getCollection('cases');
 cases.sort((a, b) => a.id.localeCompare(b.id));
 ---
-<BaseLayout title="back-of-the-envelope">
+<BaseLayout title="back-of-the-envelope-calculations">
   <header class="site-header">
     <div class="site-title">
-      <span class="prompt">$</span>back-of-the-envelope
+      <span class="prompt">$</span>back-of-the-envelope-calculations
     </div>
     <div class="site-subtitle">order-of-magnitude estimation exercises for SREs and engineers</div>
   </header>
