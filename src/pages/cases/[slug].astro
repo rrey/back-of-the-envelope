@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseInteractive from '../../components/CaseInteractive';
 
 export async function getStaticPaths() {
   const cases = await getCollection('cases');
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, difficulty, category } = entry.data;
+const { title, difficulty, category, hints, answer, explanation, keyValues } = entry.data;
 ---
 <BaseLayout title={title}>
   <p><a href="/">← all cases</a></p>
@@ -22,4 +23,11 @@ const { title, difficulty, category } = entry.data;
     <span>{category}</span>
   </div>
   <Content />
+  <CaseInteractive
+    client:load
+    hints={hints}
+    answer={answer}
+    explanation={explanation}
+    keyValues={keyValues}
+  />
 </BaseLayout>
