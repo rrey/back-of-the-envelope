@@ -371,6 +371,33 @@ body {
 }
 .try-another:hover { color: var(--color-green); }
 
+/* ── Footer ────────────────────────────────── */
+
+.site-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 2rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+}
+
+.footer-link {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+.footer-link:hover { color: var(--color-green); }
+
+.footer-github {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
 /* Utility */
 
 .muted { color: var(--color-muted); }
