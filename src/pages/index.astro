@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const cases = await getCollection('cases');
+cases.sort((a, b) => a.id.localeCompare(b.id));
+---
+<BaseLayout title="back-of-the-envelope">
+  <h1>back-of-the-envelope</h1>
+  <p class="muted">Order-of-magnitude estimation exercises for SREs and engineers.</p>
+
+  <ul class="case-grid">
+    {cases.map((entry) => (
+      <li>
+        <a class="card" href={`/cases/${entry.id}`}>
+          <div class="card-title">{entry.data.title}</div>
+          <div class="card-meta">
+            <span class={`difficulty difficulty--${entry.data.difficulty}`}>
+              {entry.data.difficulty}
+            </span>
+            <span>{entry.data.category}</span>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
