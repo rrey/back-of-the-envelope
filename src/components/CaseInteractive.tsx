@@ -26,47 +26,49 @@ export default function CaseInteractive({ hints, answer, explanation, keyValues 
   return (
     <div className="interactive">
       {hints.length > 0 && (
-        <>
-          <ul className="hint-list">
-            {hints.slice(0, revealedHints).map((hint, i) => (
-              <li className="hint-item" key={i}>{hint}</li>
-            ))}
-          </ul>
+        <div className="hints-section">
+          <div className="section-label">hints</div>
+          {hints.slice(0, revealedHints).map((hint, i) => (
+            <div className="hint-output" key={i}>{hint}</div>
+          ))}
           <button
-            className="button"
+            className="hint-btn"
             onClick={() => setRevealedHints((n) => Math.min(n + 1, hints.length))}
             disabled={revealedHints >= hints.length}
           >
             Reveal hint ({revealedHints}/{hints.length})
           </button>
-        </>
+        </div>
       )}
-      <div className="answer-row">
-        <label>
-          Your answer:{' '}
+
+      <div className="answer-section">
+        <div className="section-label">your answer</div>
+        <div className="answer-row">
+          <span className="prompt-glyph">$</span>
+          <span className="answer-label">answer:</span>
           <input
-            className="input"
+            className="answer-input"
             type="number"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             disabled={submitted}
             aria-label="your answer"
           />
-        </label>
-        <span className="muted">{answer.unit}</span>
-        <button className="button" onClick={handleSubmit} disabled={!canSubmit}>
-          Submit
-        </button>
+          <span className="unit">{answer.unit}</span>
+          <button className="submit-btn" onClick={handleSubmit} disabled={!canSubmit}>
+            Submit
+          </button>
+        </div>
       </div>
 
       {submitted && (
         <>
-          <div className={isCorrect ? 'verdict verdict--correct' : 'verdict verdict--incorrect'}>
+          <div className={isCorrect ? 'verdict verdict-correct' : 'verdict verdict-incorrect'}>
             {isCorrect
-              ? `Correct! (Accepted answer: ${answer.value} ${answer.unit}, ±${Math.round(answer.tolerance * 100)}%)`
+              ? `Correct! (Accepted: ${answer.value} ${answer.unit}, ±${Math.round(answer.tolerance * 100)}%)`
               : `Not quite — the answer is around ${answer.value} ${answer.unit} (±${Math.round(answer.tolerance * 100)}%).`}
           </div>
-          <p>{explanation}</p>
+          <div className="explanation">{explanation}</div>
           {keyValues.length > 0 && (
             <table className="keyvalues">
               <tbody>
@@ -79,7 +81,7 @@ export default function CaseInteractive({ hints, answer, explanation, keyValues 
               </tbody>
             </table>
           )}
-          <p><a href="/">Try another case →</a></p>
+          <a href="/" className="try-another">→ try another case</a>
         </>
       )}
     </div>
