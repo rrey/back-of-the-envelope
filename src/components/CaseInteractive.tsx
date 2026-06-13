@@ -10,6 +10,7 @@ interface Props {
 export default function CaseInteractive({ hints, answer, explanation, keyValues }: Props) {
   const [userInput, setUserInput] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [revealedHints, setRevealedHints] = useState(0);
 
   const parsed = parseFloat(userInput);
   const canSubmit = !submitted && Number.isFinite(parsed);
@@ -24,6 +25,22 @@ export default function CaseInteractive({ hints, answer, explanation, keyValues 
 
   return (
     <div className="interactive">
+      {hints.length > 0 && (
+        <>
+          <ul className="hint-list">
+            {hints.slice(0, revealedHints).map((hint, i) => (
+              <li className="hint-item" key={i}>{hint}</li>
+            ))}
+          </ul>
+          <button
+            className="button"
+            onClick={() => setRevealedHints((n) => Math.min(n + 1, hints.length))}
+            disabled={revealedHints >= hints.length}
+          >
+            Reveal hint ({revealedHints}/{hints.length})
+          </button>
+        </>
+      )}
       <div className="answer-row">
         <label>
           Your answer:{' '}

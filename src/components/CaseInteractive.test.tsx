@@ -53,3 +53,33 @@ describe('CaseInteractive — answer checking', () => {
     expect(button).toBeDisabled();
   });
 });
+
+describe('CaseInteractive — hint reveal', () => {
+  it('shows no hints initially', () => {
+    render(<CaseInteractive {...baseProps} />);
+    expect(screen.queryByText('hint one')).not.toBeInTheDocument();
+    expect(screen.queryByText('hint two')).not.toBeInTheDocument();
+  });
+
+  it('reveals hints one at a time', async () => {
+    const user = userEvent.setup();
+    render(<CaseInteractive {...baseProps} />);
+    const button = screen.getByRole('button', { name: /reveal hint/i });
+
+    await user.click(button);
+    expect(screen.getByText('hint one')).toBeInTheDocument();
+    expect(screen.queryByText('hint two')).not.toBeInTheDocument();
+
+    await user.click(button);
+    expect(screen.getByText('hint two')).toBeInTheDocument();
+  });
+
+  it('disables the reveal button when all hints are shown', async () => {
+    const user = userEvent.setup();
+    render(<CaseInteractive {...baseProps} />);
+    const button = screen.getByRole('button', { name: /reveal hint/i });
+    await user.click(button);
+    await user.click(button);
+    expect(button).toBeDisabled();
+  });
+});
