@@ -107,6 +107,7 @@ export default function CheatSheet() {
             <p className="cs-refs-title"># references</p>
             <ol className="cs-refs-list">
               <li><a className="cs-ref-link" href="http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html" target="_blank" rel="noopener noreferrer">J. Dean — Back-of-the-Envelope Calculations (High Scalability, 2011)</a></li>
+              <li><a className="cs-ref-link" href="https://youtu.be/modXC5IWTJI?si=Kz_J2DYBSx0r_fKs" target="_blank" rel="noopener noreferrer">J. Dean — Building Software Systems at Google (Stanford, 2010) ▶</a></li>
               <li><a className="cs-ref-link" href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener noreferrer">System Design Primer — donnemartin</a></li>
               <li><a className="cs-ref-link" href="https://colin-scott.github.io/personal_website/research/interactive_latency.html" target="_blank" rel="noopener noreferrer">Latency Numbers Every Programmer Should Know — Colin Scott</a></li>
             </ol>
