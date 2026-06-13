@@ -81,7 +81,7 @@ export default function CaseInteractive({ hints, answer, explanation, keyValues 
               </tbody>
             </table>
           )}
-          <a href="/" className="try-another">→ try another case</a>
+          <a href={import.meta.env.BASE_URL} className="try-another">→ try another case</a>
         </>
       )}
     </div>

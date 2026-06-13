@@ -25,7 +25,7 @@ cases.sort((a, b) => a.id.localeCompare(b.id));
   <ul class="case-list">
     {cases.map((entry) => (
       <li>
-        <a class="case-card" href={`/cases/${entry.id}`}>
+        <a class="case-card" href={`${import.meta.env.BASE_URL}/cases/${entry.id}`}>
           <div class="case-card-top">
             <span class="case-num">[{entry.id.slice(0, 3)}]</span>
             <span class="case-title">{entry.data.title}</span>
