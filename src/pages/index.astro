@@ -6,19 +6,29 @@ const cases = await getCollection('cases');
 cases.sort((a, b) => a.id.localeCompare(b.id));
 ---
 <BaseLayout title="back-of-the-envelope">
-  <h1>back-of-the-envelope</h1>
-  <p class="muted">Order-of-magnitude estimation exercises for SREs and engineers.</p>
+  <header class="site-header">
+    <div class="site-title">
+      <span class="prompt">$</span>back-of-the-envelope
+    </div>
+    <div class="site-subtitle">order-of-magnitude estimation exercises for SREs and engineers</div>
+  </header>
 
-  <ul class="case-grid">
+  <ul class="case-list">
     {cases.map((entry) => (
       <li>
-        <a class="card" href={`/cases/${entry.id}`}>
-          <div class="card-title">{entry.data.title}</div>
-          <div class="card-meta">
-            <span class={`difficulty difficulty--${entry.data.difficulty}`}>
+        <a class="case-card" href={`/cases/${entry.id}`}>
+          <div class="case-card-top">
+            <span class="case-num">[{entry.id.slice(0, 3)}]</span>
+            <span class="case-title">{entry.data.title}</span>
+          </div>
+          <div class="case-card-meta">
+            <span class={`badge badge-${entry.data.difficulty}`}>
               {entry.data.difficulty}
             </span>
             <span>{entry.data.category}</span>
+            {entry.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
           </div>
         </a>
       </li>

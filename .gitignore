@@ -19,3 +19,6 @@ npm-debug.log*
 
 # Visual companion session files
 .superpowers/
+
+# Claude
+.claude
