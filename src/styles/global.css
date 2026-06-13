@@ -88,6 +88,14 @@ body {
 .difficulty--medium { background: #fef3c7; color: #854d0e; }
 .difficulty--hard { background: #fee2e2; color: #991b1b; }
 
+.tag {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: var(--color-muted);
+}
+
 .button {
   font: inherit;
   padding: 0.5rem 1rem;

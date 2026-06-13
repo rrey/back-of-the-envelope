@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, difficulty, category, hints, answer, explanation, keyValues } = entry.data;
+const { title, difficulty, category, tags, hints, answer, explanation, keyValues } = entry.data;
 ---
 <BaseLayout title={title}>
   <p><a href="/">← all cases</a></p>
@@ -21,6 +21,7 @@ const { title, difficulty, category, hints, answer, explanation, keyValues } = e
   <div class="card-meta" style="margin-bottom: 1rem;">
     <span class={`difficulty difficulty--${difficulty}`}>{difficulty}</span>
     <span>{category}</span>
+    {tags.map((tag) => <span class="tag">{tag}</span>)}
   </div>
   <Content />
   <CaseInteractive
