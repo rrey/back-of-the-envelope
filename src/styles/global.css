@@ -395,6 +395,7 @@ body {
 .footer-github {
   display: flex;
   align-items: center;
+  gap: 0.4rem;
   line-height: 1;
 }
 
