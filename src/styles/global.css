@@ -371,6 +371,170 @@ body {
 }
 .try-another:hover { color: var(--color-green); }
 
+/* ── Cheat sheet trigger + pane ────────────── */
+
+.cheatsheet-trigger {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-green);
+  color: var(--color-green);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  z-index: 100;
+  letter-spacing: 0.04em;
+}
+.cheatsheet-trigger:hover {
+  background: rgba(63, 185, 80, 0.1);
+}
+
+.cheatsheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(1, 4, 9, 0.7);
+  z-index: 200;
+}
+
+.cheatsheet-pane {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: min(480px, 100vw);
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+  font-family: var(--font-mono);
+}
+.cheatsheet-pane--open {
+  transform: translateX(0);
+}
+
+.cheatsheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.cheatsheet-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-green);
+  letter-spacing: 0.02em;
+}
+.cheatsheet-close {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.1rem 0.3rem;
+  line-height: 1;
+}
+.cheatsheet-close:hover { color: var(--color-red); }
+
+.cheatsheet-body {
+  overflow-y: auto;
+  padding: 1.1rem;
+  flex: 1;
+}
+
+.cs-section {
+  margin-bottom: 1.75rem;
+}
+.cs-heading {
+  font-size: 0.68rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.75rem;
+  font-weight: 400;
+}
+
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+.cs-table tr { border-bottom: 1px solid var(--color-border-muted); }
+.cs-table tr:last-child { border-bottom: none; }
+.cs-label {
+  color: var(--color-muted);
+  padding: 0.3rem 0.5rem 0.3rem 0;
+  width: 55%;
+}
+.cs-value {
+  color: var(--color-green);
+  font-weight: 700;
+  padding: 0.3rem 0;
+}
+.cs-muted {
+  color: var(--color-muted);
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+.cs-th {
+  color: var(--color-muted);
+  font-weight: 400;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0 0.5rem 0.4rem 0;
+  text-align: left;
+}
+
+.cs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.cs-list li::before { content: '▸ '; color: var(--color-border); }
+.cs-green { color: var(--color-green); font-weight: 700; }
+
+.cs-refs {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+.cs-refs-title {
+  font-size: 0.68rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.6rem;
+}
+.cs-refs-list {
+  padding-left: 1.1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.cs-ref-link {
+  font-size: 0.68rem;
+  color: var(--color-prompt);
+  text-decoration: none;
+  line-height: 1.4;
+}
+.cs-ref-link:hover { color: var(--color-green); }
+
 /* ── Footer ────────────────────────────────── */
 
 .site-footer {
