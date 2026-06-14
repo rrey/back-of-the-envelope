@@ -10,7 +10,7 @@ hints:
 answer:
   value: 5
   unit: "billion relationships"
-  tolerance: 0.5
+  tolerance: 0.25
 explanation: "100 million users × 50 friends/user = 5 billion friend relationships. At 8 bytes per user_id × 2 IDs per edge = 16 bytes/edge, that's 80 GB just for the graph adjacency data — before any indexes. This is why social graphs need sharding: a single machine with 64 GB RAM can't hold the full graph in memory. Facebook's social graph at 2B+ users represents orders of magnitude more."
 keyValues:
   - label: "Users"

@@ -10,7 +10,7 @@ hints:
 answer:
   value: 2
   unit: "PB/month"
-  tolerance: 0.5
+  tolerance: 0.25
 explanation: "500 KB/page × 4 billion pages/month = 2,000 TB = 2 PB/month. Over 3 years: 72 PB. This is why web-scale crawling requires a distributed filesystem (GFS/Colossus) — a single machine's NVMe tops out around 100 TB. The write load is 1,600 write requests/second just for storing pages, before indexing."
 keyValues:
   - label: "Size per web page"

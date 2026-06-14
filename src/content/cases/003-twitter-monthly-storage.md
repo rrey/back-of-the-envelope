@@ -10,7 +10,7 @@ hints:
 answer:
   value: 150
   unit: "TB/month"
-  tolerance: 0.5
+  tolerance: 0.25
 explanation: "10 KB/tweet × 500M tweets/day × 30 days = 150,000 GB = 150 TB/month. Over 3 years that reaches ~5.4 PB. Text alone (140 bytes × 500M × 30) would be only ~2 TB — media (photos, videos) completely dominates storage. This scale requires distributed object storage (like S3) and a CDN for delivery."
 keyValues:
   - label: "Size per tweet (with media)"

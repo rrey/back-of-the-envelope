@@ -10,7 +10,7 @@ hints:
 answer:
   value: 6000
   unit: "tweets/s"
-  tolerance: 0.5
+  tolerance: 0.25
 explanation: "500M tweets/day ÷ 86,400 s/day ≈ 5,800 — round to 6,000 tweets/s. Handy shortcut: 400 req/s ≈ 1 billion req/month, so 15B/month × 0.4k = 6,000/s. Each tweet then fans out to followers: at an average of 10 deliveries per tweet, that's ~60,000 fanout writes/s — 10× the ingest rate."
 keyValues:
   - label: "Tweets per day"

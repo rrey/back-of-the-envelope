@@ -9,7 +9,7 @@ hints:
 answer:
   value: 100
   unit: "GB/day"
-  tolerance: 0.5
+  tolerance: 0.25
 explanation: "A typical access log line — IP, timestamp, method, path, status, user-agent, latency — is around 500 bytes. At 200M requests/day, that's 200M × 500B = 100 GB/day uncompressed. With gzip, expect ~10–20 GB/day. This matters for retention planning: 30 days uncompressed = ~3 TB."
 keyValues:
   - label: "Typical access log line"

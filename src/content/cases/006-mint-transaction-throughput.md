@@ -10,7 +10,7 @@ hints:
 answer:
   value: 2000
   unit: "TPS"
-  tolerance: 0.5
+  tolerance: 0.25
 explanation: "5 billion transactions/month ÷ 2.5 million seconds/month = 2,000 TPS. This is a write-heavy workload (10:1 write-to-read ratio) — the opposite of most web apps. At ~50 bytes per transaction record, 2,000 TPS is only ~100 KB/s of bandwidth, but it demands high IOPS and durable writes — ruling out in-memory-only stores."
 keyValues:
   - label: "Transactions/month"

@@ -10,7 +10,7 @@ hints:
 answer:
   value: 450
   unit: "GB"
-  tolerance: 0.5
+  tolerance: 0.25
 explanation: "Each paste is ~1.27 KB (1 KB content + ~270 bytes of metadata). At 10M pastes/month: 1.27 KB × 10M = 12.7 GB/month. Over 36 months: 12.7 × 36 ≈ 450 GB. Text-only storage compresses well — with gzip (~5×) you'd land around 90 GB on disk, but plan for the uncompressed worst case when sizing."
 keyValues:
   - label: "Size per paste"
