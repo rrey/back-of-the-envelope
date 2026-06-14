@@ -4,6 +4,10 @@ export default function CheatSheet() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    setOpen(localStorage.getItem('cheatsheet-open') === '1');
+  }, []);
+
+  useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') setOpen(false);
     }
@@ -13,6 +17,7 @@ export default function CheatSheet() {
 
   useEffect(() => {
     document.body.classList.toggle('pane-open', open);
+    localStorage.setItem('cheatsheet-open', open ? '1' : '0');
     return () => document.body.classList.remove('pane-open');
   }, [open]);
 
