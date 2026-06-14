@@ -5,19 +5,25 @@ import CaseInteractive from '../../components/CaseInteractive';
 
 export async function getStaticPaths() {
   const cases = await getCollection('cases');
-  return cases.map((entry) => ({
+  const sorted = cases.sort((a, b) => a.id.localeCompare(b.id));
+  return sorted.map((entry, i) => ({
     params: { slug: entry.id },
-    props: { entry },
+    props: { entry, nextId: sorted[i + 1]?.id ?? null },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, nextId } = Astro.props;
 const { Content } = await render(entry);
 const { title, difficulty, category, tags, hints, answer, explanation, keyValues } = entry.data;
 const caseNum = entry.id.slice(0, 3);
 ---
 <BaseLayout title={title}>
-  <a class="back-link" href={import.meta.env.BASE_URL}>← cd ..</a>
+  <nav class="case-nav">
+    <a class="case-nav-link" href={import.meta.env.BASE_URL}>← back</a>
+    {nextId && (
+      <a class="case-nav-link case-nav-next" href={`${import.meta.env.BASE_URL}cases/${nextId}`}>next →</a>
+    )}
+  </nav>
 
   <div class="case-header">
     <div class="case-num-line">[{caseNum}] {category}</div>

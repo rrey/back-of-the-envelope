@@ -73,16 +73,20 @@ body {
 }
 .intro-link:hover { color: var(--color-green); }
 
-/* ── Back link (case page) ─────────────────── */
+/* ── Case navigation (back / next) ─────────── */
 
-.back-link {
-  display: inline-block;
+.case-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.case-nav-link {
   font-size: 0.72rem;
   color: var(--color-prompt);
   text-decoration: none;
-  margin-bottom: 1.5rem;
 }
-.back-link:hover { color: var(--color-green); }
+.case-nav-link:hover { color: var(--color-green); }
 
 /* ── Case list (index page) ────────────────── */
 
