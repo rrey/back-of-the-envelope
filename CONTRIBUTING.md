@@ -25,7 +25,7 @@ hints:
 answer:
   value: 10000                # numeric, in the unit below
   unit: "req/s"               # displayed next to the input
-  tolerance: 0.5              # 0.5 = accept answers within ±50%
+  tolerance: 0.25             # 0.25 = accept answers within ±25%
 explanation: "Full explanation shown after submission. Include the reasoning chain."
 keyValues:
   - label: "Reference number label"
@@ -42,7 +42,7 @@ End with a bolded question: About how many **widgets per second** does this requ
 
 ### Tips for good exercises
 
-- **Tolerance:** `0.5` (±50%) suits most order-of-magnitude questions. Use `0.1` only for questions with a definitive numerical answer (e.g. "how many bits in an IPv6 address?").
+- **Tolerance:** `0.25` (±25%) suits most order-of-magnitude questions. Use `0.1` only for questions with a definitive numerical answer (e.g. "how many bits in an IPv6 address?").
 - **Hints:** Write them progressively — first hint is directional, second narrows it, third gives the key number needed to compute the answer.
 - **keyValues:** Include 3–5 reference numbers an SRE should have memorised. These appear after submission.
 - **Difficulty:** `easy` = one multiplication; `medium` = two or three steps; `hard` = requires combining several estimates.
