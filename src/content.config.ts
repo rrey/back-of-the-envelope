@@ -21,6 +21,10 @@ const cases = defineCollection({
         value: z.string(),
       })
     ),
+    source: z.object({
+      label: z.string(),
+      url: z.string().url(),
+    }).optional(),
   }),
 });
 

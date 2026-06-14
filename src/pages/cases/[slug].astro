@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { entry, prevId, nextId } = Astro.props;
 const { Content } = await render(entry);
-const { title, difficulty, category, tags, hints, answer, explanation, keyValues } = entry.data;
+const { title, difficulty, category, tags, hints, answer, explanation, keyValues, source } = entry.data;
 const caseNum = entry.id.slice(0, 3);
 ---
 <BaseLayout title={title}>
@@ -48,4 +48,11 @@ const caseNum = entry.id.slice(0, 3);
     explanation={explanation}
     keyValues={keyValues}
   />
+
+  {source && (
+    <p class="case-source">
+      Adapted from: <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>
+      {' '}— <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
+    </p>
+  )}
 </BaseLayout>
