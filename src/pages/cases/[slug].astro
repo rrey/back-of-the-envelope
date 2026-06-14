@@ -39,6 +39,12 @@ const caseNum = entry.id.slice(0, 3);
 
   <div class="scenario">
     <Content />
+    {source && (
+      <p class="case-source">
+        Adapted from: <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>
+        {' '}— <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
+      </p>
+    )}
   </div>
 
   <CaseInteractive
@@ -48,11 +54,4 @@ const caseNum = entry.id.slice(0, 3);
     explanation={explanation}
     keyValues={keyValues}
   />
-
-  {source && (
-    <p class="case-source">
-      Adapted from: <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>
-      {' '}— <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
-    </p>
-  )}
 </BaseLayout>
