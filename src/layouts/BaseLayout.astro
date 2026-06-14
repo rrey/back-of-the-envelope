@@ -20,6 +20,11 @@ const { title } = Astro.props;
   </head>
   <body>
     <div class="layout-wrapper">
+      <div class="topbar">
+        <a href={import.meta.env.BASE_URL} class="topbar-home">
+          <span class="prompt">$</span> ~/back-of-the-envelope
+        </a>
+      </div>
       <main class="page">
         <slot />
       </main>
