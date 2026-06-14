@@ -384,6 +384,16 @@ body {
 }
 .try-another:hover { color: var(--color-green); }
 
+/* ── Layout wrapper (pushed by cheat sheet pane) */
+
+.layout-wrapper {
+  transition: margin-right 0.2s ease;
+}
+
+body.pane-open .layout-wrapper {
+  margin-right: min(480px, 40vw);
+}
+
 /* ── Cheat sheet trigger + pane ────────────── */
 
 .cheatsheet-trigger {
@@ -399,18 +409,15 @@ body {
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius);
   cursor: pointer;
-  z-index: 100;
+  z-index: 400;
   letter-spacing: 0.04em;
+  transition: background 0.15s, right 0.2s ease;
 }
 .cheatsheet-trigger:hover {
   background: rgba(63, 185, 80, 0.1);
 }
-
-.cheatsheet-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(1, 4, 9, 0.7);
-  z-index: 200;
+.cheatsheet-trigger--active {
+  right: calc(min(480px, 40vw) + 1.25rem);
 }
 
 .cheatsheet-pane {
@@ -418,7 +425,7 @@ body {
   top: 0;
   right: 0;
   height: 100dvh;
-  width: min(480px, 100vw);
+  width: min(480px, 40vw);
   background: var(--color-surface);
   border-left: 1px solid var(--color-border);
   z-index: 300;
@@ -430,6 +437,19 @@ body {
 }
 .cheatsheet-pane--open {
   transform: translateX(0);
+}
+
+/* On narrow screens fall back to full-width overlay */
+@media (max-width: 800px) {
+  body.pane-open .layout-wrapper {
+    margin-right: 0;
+  }
+  .cheatsheet-pane {
+    width: 100vw;
+  }
+  .cheatsheet-trigger--active {
+    right: 1.25rem;
+  }
 }
 
 .cheatsheet-header {

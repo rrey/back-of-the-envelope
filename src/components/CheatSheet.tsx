@@ -12,23 +12,19 @@ export default function CheatSheet() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    document.body.classList.toggle('pane-open', open);
+    return () => document.body.classList.remove('pane-open');
   }, [open]);
 
   return (
     <>
       <button
-        className="cheatsheet-trigger"
-        onClick={() => setOpen(true)}
-        aria-label="Open SRE cheat sheet"
+        className={`cheatsheet-trigger${open ? ' cheatsheet-trigger--active' : ''}`}
+        onClick={() => setOpen(o => !o)}
+        aria-label={open ? 'Close SRE cheat sheet' : 'Open SRE cheat sheet'}
       >
-        [?] cheatsheet
+        {open ? '[✕] cheatsheet' : '[?] cheatsheet'}
       </button>
-
-      {open && (
-        <div className="cheatsheet-backdrop" onClick={() => setOpen(false)} aria-hidden="true" />
-      )}
 
       <aside className={`cheatsheet-pane${open ? ' cheatsheet-pane--open' : ''}`} aria-label="SRE cheat sheet">
         <div className="cheatsheet-header">
