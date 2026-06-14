@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const cases = await getCollection('cases');
 cases.sort((a, b) => a.id.localeCompare(b.id));
 ---
-<BaseLayout title="back-of-the-envelope-calculations">
+<BaseLayout title="back-of-the-envelope-calculations" showHome={false}>
   <header class="site-header">
     <div class="site-title">
       <span class="prompt">$</span>back-of-the-envelope-calculations
