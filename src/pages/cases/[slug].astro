@@ -8,20 +8,23 @@ export async function getStaticPaths() {
   const sorted = cases.sort((a, b) => a.id.localeCompare(b.id));
   return sorted.map((entry, i) => ({
     params: { slug: entry.id },
-    props: { entry, nextId: sorted[i + 1]?.id ?? null },
+    props: { entry, prevId: sorted[i - 1]?.id ?? null, nextId: sorted[i + 1]?.id ?? null },
   }));
 }
 
-const { entry, nextId } = Astro.props;
+const { entry, prevId, nextId } = Astro.props;
 const { Content } = await render(entry);
 const { title, difficulty, category, tags, hints, answer, explanation, keyValues } = entry.data;
 const caseNum = entry.id.slice(0, 3);
 ---
 <BaseLayout title={title}>
   <nav class="case-nav">
-    <a class="case-nav-link" href={import.meta.env.BASE_URL}>← back</a>
+    {prevId
+      ? <a class="case-nav-link" href={`${import.meta.env.BASE_URL}cases/${prevId}`}>← back</a>
+      : <a class="case-nav-link" href={import.meta.env.BASE_URL}>← back</a>
+    }
     {nextId && (
-      <a class="case-nav-link case-nav-next" href={`${import.meta.env.BASE_URL}cases/${nextId}`}>next →</a>
+      <a class="case-nav-link" href={`${import.meta.env.BASE_URL}cases/${nextId}`}>next →</a>
     )}
   </nav>
 
